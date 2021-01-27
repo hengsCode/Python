@@ -104,6 +104,20 @@ def createLinkedList():
 def createNode(value):
     return Node(value)
 
+def findNodeR(node, target):
+    if (node.value == target):
+        return node
+    elif (node.next is None):
+        return None
+    
+    return findNodeR(node.next, target)
+
+def appendNodeR(node, new):
+    if (node.next is None):
+        node.next = new
+        return 
+    return appendNodeR(node.next, new)
+    
 if __name__ == "__main__": 
     newList = createLinkedList()
 
@@ -116,17 +130,26 @@ if __name__ == "__main__":
         # If newList is not empty, newNode is added to newList
         else:
             # Added to end of newList
-            newList.appendNode(newNode)
+            # newList.appendNode(newNode)
             # Added to start of newList
             # prependNode(newNode, newList)
+            # Recursively added to end of newList
+            appendNodeR(newList.headval, newNode)
             
 
 print("[Original List]:")
 newList.listPrint()
 
-print("[Finding node with target value 4]:")
+print("[Finding node with target value]:")
 foundNode = newList.findNode(4)
 foundNode.nodePrint()
+
+print("[Finding node with target value recursively]:")
+recursiveNode = findNodeR(newList.headval, 2)
+if recursiveNode is None: 
+    print("Could not find the target node.")
+else:
+    recursiveNode.nodePrint()
 
 print("[New List after inserting at specified index]:")
 addNewNode = createNode(3)
