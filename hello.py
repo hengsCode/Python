@@ -16,9 +16,9 @@ def randomFunction():
 # The interpreter will then search for that file
 if __name__ == "__main__":
     randomFunction()
-    newFunction()
+    # newFunction()
 
 print("My name is Henry.")
 
-def newFunction():
-    print("this won't print unless you bring it before main")
+# def newFunction():
+#     print("this won't print unless you bring it before main")
